@@ -5,7 +5,7 @@ function Projects() {
     return (
         <Layout>
             <Content>
-                {`Work in Progress...`}
+                {`Projects page work in Progress...`}
             </Content>
         </Layout>
     )
