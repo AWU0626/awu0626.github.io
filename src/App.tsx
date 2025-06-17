@@ -35,6 +35,17 @@ function App() {
         }
     };
 
+    const getPageExtension = () => {
+        switch(location.pathname) {
+            case '/': return 'home';
+            case '/anime': return 'anime';
+            case '/projects': return 'projects';
+            case '/contact': return 'contact';
+            case '/donate': return 'donate'
+            default: return 'home';
+        }
+    }
+
     useEffect(() => {
         const handleResize = () => {
             setDimensions({
@@ -47,22 +58,23 @@ function App() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    useEffect(() => {
-        async function testLambda() {
-            const response = await fetch('https://6apgwr9ym7.execute-api.us-east-2.amazonaws.com/default/create-stripe-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
+    // useEffect(() => {
+    //     async function testLambda() {
+    //         const response = await fetch('https://6apgwr9ym7.execute-api.us-east-2.amazonaws.com/default/create-stripe-checkout-session', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Accept': 'application/json'
+    //             },
     
-                body: JSON.stringify({ productId: 'coffee donation', quantity: 1 })
-            });
+    //             body: JSON.stringify({ productId: 'coffee donation', quantity: 1 })
+    //         });
 
-            console.log(response.json())
-        }
-        testLambda();
-    }, [])
+    //         console.log(response.json())
+    //     }
+    //     testLambda();
+    // }, [])
+
     const items: MenuProps['items'] = [
         { key: 'home', icon: <AiFillHome size={18} />, label: <Link to="/">Home</Link> },
         { key: 'anime', icon: <SiMyanimelist size={18} />, label: <Link to="/anime">Anime</Link> },
@@ -108,7 +120,7 @@ function App() {
                     <ProfileImage width={Math.max(200, dimensions.width * 0.15)} />
                     <Menu
                         theme="dark"
-                        defaultSelectedKeys={['home']}
+                        defaultSelectedKeys={[getPageExtension()]}
                         mode="inline"
                         items={items}
                         onClick={() => {
