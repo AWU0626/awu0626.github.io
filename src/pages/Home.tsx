@@ -5,7 +5,7 @@ function Home() {
     return (
         <Layout>
             <Content>
-                {`Work in Progress...`}
+                {`Home page work in Progress...`}
             </Content>
         </Layout>
     )

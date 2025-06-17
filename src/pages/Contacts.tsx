@@ -5,7 +5,7 @@ function Contacts() {
     return (
         <Layout>
             <Content>
-                {`Work in Progress...`}
+                {`Contact page work in Progress...`}
             </Content>
         </Layout>
     )

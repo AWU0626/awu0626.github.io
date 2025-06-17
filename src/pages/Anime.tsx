@@ -5,7 +5,7 @@ function Anime() {
     return (
         <Layout>
             <Content>
-                {`Work in Progress...`}
+                {`Anime page work in Progress...`}
             </Content>
         </Layout>
     )

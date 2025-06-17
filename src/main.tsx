@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Anime from './pages/Anime'
 import Contacts from './pages/Contacts'
 import Projects from './pages/Projects'
+import Donate from './pages/Donate'
 
 createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
                 <Route path='anime' element={<Anime />} />
                 <Route path='contact' element={<Contacts />} />
                 <Route path='projects' element={<Projects />} />
+                <Route path='donate' element={<Donate />} />
             </Route>
         </Routes>
     </BrowserRouter>
