@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, HashRouter } from 'react-router'
+import { Routes, Route, HashRouter } from 'react-router'
 
 import App from './App'
 import Home from './pages/Home'
