@@ -153,12 +153,12 @@ function App() {
                     </Content>
                     <Layout.Footer style={{ 
                         overflowX: 'auto',
-                        overflowY: 'hidden',
+                        overflowY: 'auto',
                         whiteSpace: 'nowrap',
                         height: 50,
                         display: 'center',
                         justifyContent: 'flex-end',
-                        paddingTop: 20,
+                        paddingTop: 30,
                         paddingBottom: 40,
                         borderTop: '1px solid #aaaaaa',
                     }}>

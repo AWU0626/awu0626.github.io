@@ -1,5 +1,4 @@
 import { Card, Layout, Row, Col } from "antd";
-import { Content } from "antd/es/layout/layout";
 import { useEffect, useState } from "react";
 
 // server calling
@@ -51,9 +50,9 @@ function Anime() {
     }, [])
 
     return (
-        <Layout>
-            <Content style={{overflowY: 'auto', height: '100vh'}}>
-                <Row gutter={[36, 36]} style={{paddingBottom: 150}}>
+        <Layout style={{ overflow: 'hidden', height: '81vh'}}>
+            {/* <Content > */}
+                <Row gutter={[36, 36]} style={{overflowY: 'scroll', paddingBottom: 20, overflowX: 'hidden'}}>
                     {animeList.map((anime) => (
                         <Col key={anime.id} xs={36} sm={24} md={12} lg={6}>
                         <Card
@@ -68,7 +67,7 @@ function Anime() {
                         </Col>
                     ))}
                 </Row>
-            </Content>
+            {/* </Content> */}
         </Layout>
     )
 }
