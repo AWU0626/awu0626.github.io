@@ -1,0 +1,20 @@
+{
+  "name": "get-top-ten-anime",
+  "version": "1.0.0",
+  "description": "gets user's top 10 anime from my anime list",
+  "license": "ISC",
+  "author": "awu0626",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^1.10.0"
+  },
+  "devDependencies": {
+    "aws-lambda-mock-context": "^3.2.1",
+    "axios-mock-adapter": "^2.1.0",
+    "jest": "^29.7.0"
+  }
+}

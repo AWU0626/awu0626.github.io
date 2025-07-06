@@ -4,7 +4,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import ProfileImage from './components/ProfileImage/ProfileImage';
 
 // icons
-import { GithubFilled, LinkedinFilled, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { CloseOutlined, GithubFilled, LinkedinFilled, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { AiFillHome } from "react-icons/ai";
 import { SiMyanimelist } from "react-icons/si";
 import { IoMdCode } from "react-icons/io";
@@ -14,16 +14,16 @@ import { FaCoffee } from "react-icons/fa";
 const { Sider, Content, Header } = Layout;
 
 function App() {
+    const location = useLocation();
+    
     const [dimensions, setDimensions] = useState<{
         height: number, width: number
     }>({
         height: window.innerHeight,
         width: window.innerWidth
     });
-
     const [collapsed, setCollapsed] = useState<boolean>(false);
 
-    const location = useLocation();
     const getPageTitle = () => {
         switch(location.pathname) {
             case '/': return 'Home';
@@ -57,23 +57,6 @@ function App() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-
-    // useEffect(() => {
-    //     async function testLambda() {
-    //         const response = await fetch('https://6apgwr9ym7.execute-api.us-east-2.amazonaws.com/default/create-stripe-checkout-session', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Accept': 'application/json'
-    //             },
-    
-    //             body: JSON.stringify({ productId: 'coffee donation', quantity: 1 })
-    //         });
-
-    //         console.log(response.json())
-    //     }
-    //     testLambda();
-    // }, [])
 
     const items: MenuProps['items'] = [
         { key: 'home', icon: <AiFillHome size={18} />, label: <Link to="/">Home</Link> },
@@ -115,7 +98,13 @@ function App() {
                     breakpoint="lg"
                     collapsedWidth="0"
                     width={Math.max(200, dimensions.width * 0.15)}
-                    trigger={null}
+                    trigger={dimensions.width < 992 ? <CloseOutlined size={18} /> : null}
+                    style={{
+                        position: dimensions.width < 992 ? 'fixed' : 'relative',
+                        height: '100vh',
+                        zIndex: 1000,
+                        left: collapsed && dimensions.width < 992 ? `-${Math.max(200, dimensions.width * 0.15)}px` : '0',
+                    }}
                 >
                     <ProfileImage width={Math.max(200, dimensions.width * 0.15)} />
                     <Menu
@@ -127,6 +116,7 @@ function App() {
                             if (dimensions.width < 500) setCollapsed(!collapsed)
                         }}
                     />
+                    <Divider style={{}}/>
                 </Sider>
                 <Layout>
                     <Header style={{ 
